@@ -102,15 +102,15 @@ const FormLabel = React.forwardRef<
 })
 FormLabel.displayName = "FormLabel"
 
-// Fixed FormControl component to correctly handle input elements without trying to pass children
+// Completely rewritten FormControl component to safely handle any form element
 const FormControl = React.forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
+  React.ElementRef<typeof Slot>,
+  React.ComponentPropsWithoutRef<typeof Slot>
 >(({ ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
-    <input
+    <Slot
       ref={ref}
       id={formItemId}
       aria-describedby={
