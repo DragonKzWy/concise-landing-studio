@@ -102,26 +102,22 @@ const FormLabel = React.forwardRef<
 })
 FormLabel.displayName = "FormLabel"
 
-// Changed FormControl from Radix Slot to render input directly with forwarded ref and correct id
+// Properly typed FormControl component with JSX.IntrinsicElements approach
 const FormControl = React.forwardRef<
-  React.ElementRef<"input" | "textarea" | HTMLSelectElement>,
-  React.ComponentPropsWithoutRef<"input" | "textarea" | HTMLSelectElement>
->(({ as: Component = "input", ...props }, ref) => {
+  HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> & { type?: string }
+>((props, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
-  return (
-    <Component
-      ref={ref}
-      id={formItemId}
-      aria-describedby={
-        !error
-          ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
-      }
-      aria-invalid={!!error}
-      {...props}
-    />
-  )
+  return React.createElement("input", {
+    ref,
+    id: formItemId,
+    "aria-describedby": !error
+      ? `${formDescriptionId}`
+      : `${formDescriptionId} ${formMessageId}`,
+    "aria-invalid": !!error,
+    ...props,
+  })
 })
 FormControl.displayName = "FormControl"
 
@@ -176,4 +172,3 @@ export {
   FormMessage,
   FormField,
 }
-
