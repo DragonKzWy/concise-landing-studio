@@ -102,16 +102,16 @@ const FormLabel = React.forwardRef<
 })
 FormLabel.displayName = "FormLabel"
 
-// Fixed FormControl component to properly handle different input types
+// Fixed FormControl component to correctly handle input elements without trying to pass children
 const FormControl = React.forwardRef<
-  HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+  HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
->((props, ref) => {
+>(({ ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
     <input
-      ref={ref as React.RefObject<HTMLInputElement>}
+      ref={ref}
       id={formItemId}
       aria-describedby={
         !error
