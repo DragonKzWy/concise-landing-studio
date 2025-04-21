@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
@@ -101,14 +102,15 @@ const FormLabel = React.forwardRef<
 })
 FormLabel.displayName = "FormLabel"
 
+// Changed FormControl from Radix Slot to render input directly with forwarded ref and correct id
 const FormControl = React.forwardRef<
-  React.ElementRef<typeof Slot>,
-  React.ComponentPropsWithoutRef<typeof Slot>
->(({ ...props }, ref) => {
+  React.ElementRef<"input" | "textarea" | HTMLSelectElement>,
+  React.ComponentPropsWithoutRef<"input" | "textarea" | HTMLSelectElement>
+>(({ as: Component = "input", ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
-    <Slot
+    <Component
       ref={ref}
       id={formItemId}
       aria-describedby={
@@ -174,3 +176,4 @@ export {
   FormMessage,
   FormField,
 }
+

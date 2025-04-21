@@ -12,7 +12,7 @@ interface TemplatePreviewProps {
 
 const TemplatePreview = ({ template, data, isPlaceholder = false, fullscreen = false }: TemplatePreviewProps) => {
   return (
-    <div className={`border rounded-lg overflow-hidden ${isPlaceholder ? "opacity-70" : ""} ${fullscreen ? "" : "h-[600px]"}`}>
+    <div className={`relative border rounded-lg overflow-hidden ${isPlaceholder ? "opacity-70" : ""} ${fullscreen ? "" : "h-[600px]"}`}>
       <div className={`${fullscreen ? "" : "h-full overflow-y-auto"}`}>
         {template === "template1" ? (
           <Template1 data={data} isPlaceholder={isPlaceholder} />
@@ -22,8 +22,8 @@ const TemplatePreview = ({ template, data, isPlaceholder = false, fullscreen = f
       </div>
       
       {isPlaceholder && (
-        <div className="absolute inset-0 flex items-center justify-center bg-background/50 rounded-lg">
-          <p className="text-sm font-medium text-muted-foreground bg-background/90 px-3 py-2 rounded">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/50 rounded-lg">
+          <p className="text-sm font-medium text-muted-foreground bg-background/90 px-3 py-2 rounded select-none">
             Preview - Fill the form to generate
           </p>
         </div>
@@ -33,3 +33,4 @@ const TemplatePreview = ({ template, data, isPlaceholder = false, fullscreen = f
 };
 
 export default TemplatePreview;
+
