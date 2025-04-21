@@ -102,22 +102,26 @@ const FormLabel = React.forwardRef<
 })
 FormLabel.displayName = "FormLabel"
 
-// Properly typed FormControl component with JSX.IntrinsicElements approach
+// Fixed FormControl component to properly handle different input types
 const FormControl = React.forwardRef<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> & { type?: string }
+  React.InputHTMLAttributes<HTMLInputElement>
 >((props, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
-  return React.createElement("input", {
-    ref,
-    id: formItemId,
-    "aria-describedby": !error
-      ? `${formDescriptionId}`
-      : `${formDescriptionId} ${formMessageId}`,
-    "aria-invalid": !!error,
-    ...props,
-  })
+  return (
+    <input
+      ref={ref as React.RefObject<HTMLInputElement>}
+      id={formItemId}
+      aria-describedby={
+        !error
+          ? `${formDescriptionId}`
+          : `${formDescriptionId} ${formMessageId}`
+      }
+      aria-invalid={!!error}
+      {...props}
+    />
+  )
 })
 FormControl.displayName = "FormControl"
 
