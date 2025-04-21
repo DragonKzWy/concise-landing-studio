@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
 
-## Project info
+# Intelligent Landing Page Generator
 
-**URL**: https://lovable.dev/projects/95a91113-2531-4295-b118-8a22bf5b7a2d
+A modern React application for creating professional real estate landing pages quickly and easily.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Clean and modular architecture
+- Form-based landing page generation
+- Multiple responsive templates
+- Real-time preview of landing pages
+- Accessibility-compliant components
+- Mobile-first design approach
 
-**Use Lovable**
+## Project Structure
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/95a91113-2531-4295-b118-8a22bf5b7a2d) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/
+│   └── landing-page/
+│       ├── LandingPageForm.tsx      # Form for inputting landing page data
+│       ├── TemplatePreview.tsx      # Component for previewing templates
+│       ├── TemplateSelector.tsx     # UI for selecting templates
+│       └── templates/
+│           ├── Template1.tsx        # Modern template
+│           └── Template2.tsx        # Classic template
+├── hooks/
+│   └── useLandingPage.ts            # Custom hook for landing page operations
+├── pages/
+│   ├── Index.tsx                    # Main page with form and preview
+│   └── NotFound.tsx                 # 404 page
+├── services/
+│   └── landingPageService.ts        # Service for API operations
+├── types/
+│   └── landing-page.ts              # TypeScript interfaces for landing pages
+└── App.tsx                          # Main application component
 ```
 
-**Edit a file directly in GitHub**
+## Technology Stack
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- React with TypeScript
+- Tailwind CSS for styling
+- shadcn/ui component library
+- React Hook Form for form handling
+- Zod for form validation
 
-**Use GitHub Codespaces**
+## Getting Started
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
+4. Open your browser to: `http://localhost:5173`
 
-## What technologies are used for this project?
+## Production Deployment
 
-This project is built with:
+This application is ready for deployment to services like Vercel, Netlify, or GitHub Pages:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Build the application: `npm run build`
+2. Deploy the `dist` directory to your hosting provider
 
-## How can I deploy this project?
+## Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/95a91113-2531-4295-b118-8a22bf5b7a2d) and click on Share -> Publish.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License - see the LICENSE file for details.
