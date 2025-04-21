@@ -61,7 +61,6 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
 
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     setLoading(true);
-    // Simulate service call
     setTimeout(() => {
       onSubmit(values);
       setLoading(false);
@@ -83,7 +82,11 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
                 <FormItem>
                   <FormLabel>Property Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Stunning Waterfront Villa" {...field} />
+                    <Input 
+                      type="text"
+                      placeholder="Stunning Waterfront Villa" 
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription>
                     This will be the main headline for your property.
@@ -100,7 +103,11 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
                 <FormItem>
                   <FormLabel>Subtitle</FormLabel>
                   <FormControl>
-                    <Input placeholder="Exclusive Beachfront Location" {...field} />
+                    <Input 
+                      type="text"
+                      placeholder="Exclusive Beachfront Location" 
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription>
                     A short, catchy phrase about the property.
@@ -136,7 +143,11 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
                   <FormItem>
                     <FormLabel>Realtor Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Jane Smith" {...field} />
+                      <Input 
+                        type="text"
+                        placeholder="Jane Smith"
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -150,7 +161,11 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
                   <FormItem>
                     <FormLabel>Realtor Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="jane@realestate.com" {...field} />
+                      <Input 
+                        type="email"
+                        placeholder="jane@realestate.com"
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -165,7 +180,11 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
                 <FormItem>
                   <FormLabel>Featured Image URL (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="https://example.com/property-image.jpg" {...field} />
+                    <Input 
+                      type="text"
+                      placeholder="https://example.com/property-image.jpg" 
+                      {...field} 
+                    />
                   </FormControl>
                   <FormDescription>
                     Enter a URL for the property's featured image.
@@ -194,3 +213,4 @@ const LandingPageForm = ({ onSubmit, setActiveTemplate, activeTemplate }: Landin
 };
 
 export default LandingPageForm;
+
